@@ -10,9 +10,6 @@ from typing import List
 # | GLOBAL EXECUTIONS & GLOBAL VARIABLES
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 SERVICE_ACCOUNT_FILE = os.path.join("ggsheet", "key.json")
-# SERVICE_ACCOUNT_FILE = os.path.join(
-#     os.path.split(os.path.abspath(sys.argv[0]))[0], SERVICE_ACCOUNT_FILE
-# )
 
 CREDS = None
 CREDS = service_account.Credentials.from_service_account_file(
