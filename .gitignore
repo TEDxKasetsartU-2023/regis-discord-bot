@@ -137,3 +137,6 @@ logs/
 # tmp file
 *.tmp
 tmp.*
+
+# google apis key
+ggsheet/key.json
