@@ -130,3 +130,10 @@ dmypy.json
 
 # venv folder
 *venv/
+
+# log folder
+logs/
+
+# tmp file
+*.tmp
+tmp.*
