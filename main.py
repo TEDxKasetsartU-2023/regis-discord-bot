@@ -47,7 +47,7 @@ async def get_channel_from_id(msg: discord.Message) -> discord.channel:
 
     return ch
 
-async def get_server_from_name(server_name: str) -> Union[discord.Guild, None]:
+def get_server_from_name(server_name: str) -> Union[discord.Guild, None]:
     global CLIENT
 
     for s in CLIENT.guilds:
@@ -91,10 +91,13 @@ async def on_message(msg: discord.Message) -> None:
                         _server_name = parsed_cmd["param"]["server_name"]
                         _name = parsed_cmd["param"]["name"]
                         _server = get_server_from_name(_server_name)
+                        print(_server)
                         if _server is None:
                             LOGGER.print_log(f"{_server_name} is used in {COMMAND_PREFIX+cmd} as a param but can not access", log.INFO)
                             await ch.send(f"I can't go to `{_server_name}`! 😣")
                             return
+                        else:
+                            await ch.send(f"got {_server_name} {_name}")
             else:
                 LOGGER.print_log(f"{author} sent a unknown/incomplete command [{msg.content}]", log.INFO)
                 await ch.send(f"I don't understand that! 🤨\nUse `{COMMAND_PREFIX}help` to get helping message.")
