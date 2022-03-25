@@ -1,9 +1,9 @@
 # a discord bot for registration in the server
 # | IMPORT
-from datetime import datetime, timedelta
 import discord
 import os
 
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from typing import Union
 
@@ -73,6 +73,12 @@ async def set_role(author: discord.User, server_name: str, raw_role: str):
         if r.name in role_input:
             await _member.add_roles(r)
 
+
+@CLIENT.event
+async def on_connect() -> None:
+    global LOGGER
+
+    LOGGER.print_log("Connected!", log_level=log.INFO)
 
 @CLIENT.event
 async def on_ready() -> None:

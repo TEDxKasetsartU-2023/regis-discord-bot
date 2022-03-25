@@ -172,13 +172,5 @@ if __name__ == "__main__":
         with open(TOKEN_FILENAME, "wb") as token:
             pickle.dump(GMAIL_CREDS, token)
 
-    # s = sheet_management(sheet_id="1V1jUG9ZSRJm3rjWpf2zySVLv6qjURgDGazl98y6ECTo", creds=SHEET_CREDS)
-    # print(s.read_sheet_by_range("media อันแรก!A1:X11"))
-    sys.path.append(
-        os.path.abspath(r"D:\TEDxKasetsartU\Discord\regis-discord-bot\utils")
-    )
-    from OTP import gen_otp
-
     g = gmail_management(creds=GMAIL_CREDS)
-    # otp, ref = gen_otp(".)
     print(g.send_mail("ratcahpol.c@ku.th", "Test", "123456", "1234"))
