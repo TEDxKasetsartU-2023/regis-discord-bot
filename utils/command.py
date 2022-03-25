@@ -6,6 +6,7 @@ from typing import Dict, List, Union
 COMMAND_STRUCTURE = {
     "help": {"param": {}, "return": str},
     "regis": {"param": {"server_name": str, "name": str}, "return": str},
+    "otp": {"param": {"otp": str}, "return": str}
 }
 
 # | FUNCTIONS

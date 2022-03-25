@@ -138,6 +138,10 @@ logs/
 *.tmp
 tmp.*
 
+# otp data
+otp.dat
+
 # google apis key
 googleModule/key.json
 googleModule/credentials.json
+*token*
