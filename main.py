@@ -24,27 +24,27 @@ HELP_MSG = f"""
 
 ──────────────
 
-ℹ️ **Description** ℹ️
+ℹ️ **รายะเอียด** ℹ️
 ──────────────
-**A registration bot for discord**
+**น้องแมวลงทะเบียนเข้าเซิฟเวอร์ของดิสคอร์ด**
 
-_If you want to send a string with space inside (i.e., Test Name), You must enclose a string with `"` (i.e., "Test Name")_
+_ถ้าอยากจะส่งข้อความที่มีวรรคอยู่ (เช่น Test Name), ต้องใช้เครื่องหมายคำพูด `"` (เช่น "Test Name")_
 
-⚙️ **Command** ⚙️
+⚙️ **คำสั่ง** ⚙️
 ──────────────
 **`{COMMAND_PREFIX}help`**
-**__Description__**: Show this message.
+**__Description__**: ขอความช่วยเหลือให้น้องบอกวิธีใช้งานตัวเอง
 
-**`{COMMAND_PREFIX}regis [server_name] [name]`**
-**__Description__**: Initiate registration process.
+**`{COMMAND_PREFIX}regis [ชื่อเซิฟเวอร์] [ชื่อ]`**
+**__Description__**: เริ่มต้นการลงทะเบียนกับน้องทองหยอด
 **__Parameter__**:
-        **`server_name`**: server name. 
-        **`name`**: your name
+        **`server_name`**: ชื่อของเซิฟเวอร์ที่ต้องการลงทะเบียน 
+        **`name`**: ชื่อของคุณที่ต้องใช้ในการลงทะเบียน
 
 **`{COMMAND_PREFIX}otp [OTP]`**
-**__Description__**: Verify yourself with the OTP.
+**__Description__**: ยืนยันตัวตนกับน้องทองหยอดด้วย OTP
 **__Parameter__**:
-        **`OTP`**: One-Time Password
+        **`OTP`**: One-Time Password ที่ส่งไปทางอีเมล
 """
 
 # | FUNCTIONS
@@ -118,7 +118,7 @@ async def on_message(msg: discord.Message) -> None:
                         f"{author} use {COMMAND_PREFIX+cmd} command", log.INFO
                     )
                     help_msg = discord.Embed(
-                        title="❓Help❓",
+                        title="❓วิธีให้น้องทองหยอดช่วย❓",
                         description=HELP_MSG,
                         color=discord.Color.random(),
                     )
@@ -137,7 +137,7 @@ async def on_message(msg: discord.Message) -> None:
                                 f"{_server_name} is used in {COMMAND_PREFIX+cmd} as a param but can not access",
                                 log.INFO,
                             )
-                            await ch.send(f"I can't go to `{_server_name}`! 😣")
+                            await ch.send(f"I can't go to `{_server_name}`! 🙀")
                             return
                         else:
                             sheet_data = parseSheet(
@@ -159,16 +159,16 @@ async def on_message(msg: discord.Message) -> None:
                                     log.INFO,
                                 )
                                 await ch.send(
-                                    f"Well... Who're you exactly? I don't think I know you! 🤔"
+                                    f"Well... Who're you exactly? I don't think I know you! 😾"
                                 )
                                 return
                             elif user_data["สถานะ"] == "รอส่ง OTP":
                                 await ch.send(
-                                    f"Nope! I'm still waiting for your OTP. 😕"
+                                    f"Nope! I'm still waiting for your OTP. 😿"
                                 )
                                 return
                             elif user_data["สถานะ"] == "เสร็จสิ้นการลงทะเบียน":
-                                await ch.send(f"Why do you want to register again? 🤨")
+                                await ch.send(f"Why do you want to register again? 😸")
                                 return
                             elif user_data["สถานะ"] == "ยังไม่ได้ลงทะเบียน":
                                 otp, ref = gen_otp(
@@ -183,7 +183,7 @@ async def on_message(msg: discord.Message) -> None:
                                     log.INFO,
                                 )
                                 await ch.send(
-                                    f"Go check your email! 📨 I've sent you an OTP with the ref. code `{ref}`. 😁"
+                                    f"Go check your email! 📨 I've sent you an OTP with the ref. code `{ref}`. 🐱"
                                 )
                                 return
                     elif cmd == "otp":
@@ -203,7 +203,7 @@ async def on_message(msg: discord.Message) -> None:
                                     f"{author} has sent an invalid OTP", log.INFO
                                 )
                                 await ch.send(
-                                    f"That is not my OTP! Where do you get that from? 🤨\nMake sure that you get the correct OTP by checking the ref. code! 🥱"
+                                    f"That is not my OTP! Where do you get that from? 😾\nMake sure that you get the correct OTP by checking the ref. code! 😺"
                                 )
                                 return
                             old_wait_data = wait_data
@@ -237,7 +237,7 @@ async def on_message(msg: discord.Message) -> None:
                                         otp_data["server"],
                                         wait_data[author][0]["ฝ่าย"],
                                     )
-                                    await ch.send(f"It's done! Congratulations 😁🎉")
+                                    await ch.send(f"It's done! Congratulations 😸🎉")
                                     return
                                 else:
                                     OTP_WAIT_LST.remove(old_wait_data)
@@ -252,7 +252,7 @@ async def on_message(msg: discord.Message) -> None:
                                         f"{author} has sent an expire OTP", log.INFO
                                     )
                                     await ch.send(
-                                        f"Well... You took too long! My little OTP has been expire. 🙄\nGo back to `$regis` again!"
+                                        f"Well... You took too long! My little OTP has been expire. 🙀\nGo back to `$regis` again!"
                                     )
                                     return
                             else:
@@ -260,7 +260,7 @@ async def on_message(msg: discord.Message) -> None:
                                     f"{author} has sent the other OTP", log.INFO
                                 )
                                 await ch.send(
-                                    f"That is not your OTP! Where do you get that from? 🤨\nMake sure that you get the correct OTP by checking the ref. code! 🥱"
+                                    f"That is not your OTP! Where do you get that from? 😾\nMake sure that you get the correct OTP by checking the ref. code! 😺"
                                 )
                                 return
                         else:
@@ -268,7 +268,7 @@ async def on_message(msg: discord.Message) -> None:
                                 f"{author} try to use otp before regis", log.INFO
                             )
                             await ch.send(
-                                f"I do not expect you to send an OTP! Why do you send me that? 🤨"
+                                f"I do not expect you to send an OTP! Why do you send me that? 😾"
                             )
                             return
             else:
@@ -277,7 +277,7 @@ async def on_message(msg: discord.Message) -> None:
                     log.INFO,
                 )
                 await ch.send(
-                    f"I don't understand that! 🤨\nUse `{COMMAND_PREFIX}help` to get helping message."
+                    f"I don't understand that! 🙀\nUse `{COMMAND_PREFIX}help` to get helping message."
                 )
 
 
