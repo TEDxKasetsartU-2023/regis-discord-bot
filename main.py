@@ -40,6 +40,11 @@ _If you want to send a string with space inside (i.e., Test Name), You must encl
 **__Parameter__**:
         **`server_name`**: server name. 
         **`name`**: your name
+
+**`{COMMAND_PREFIX}otp [OTP]`**
+**__Description__**: Verify yourself with the OTP.
+**__Parameter__**:
+        **`OTP`**: One-Time Password
 """
 
 # | FUNCTIONS
