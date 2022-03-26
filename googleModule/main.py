@@ -66,7 +66,7 @@ class gmail_management:
     def send_mail(self, to: str, subject: str, otp: str, ref: str) -> None:
         r_msg = parseHTML(
             os.path.abspath(
-                r"D:\TEDxKasetsartU\Discord\regis-discord-bot\googleModule\content.html"
+                os.path.join("googleModule","content.html")
             ),
             {"OTP": otp, "REF": ref},
         )

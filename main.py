@@ -279,7 +279,8 @@ async def on_message(msg: discord.Message) -> None:
 # | MAIN
 if __name__ == "__main__":
     GMAIL_CREDS, SHEET_CREDS = init_creds(
-        r"googleModule\credentials.json", r"googleModule\key.json"
+        os.path.join("googleModule", "credentials.json"),
+        os.path.join("googleModule", "key.json")
     )
     GMAIL = gmail_management(creds=GMAIL_CREDS)
     SHEET = sheet_management(
