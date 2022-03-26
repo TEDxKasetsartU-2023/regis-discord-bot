@@ -183,7 +183,7 @@ async def on_message(msg: discord.Message) -> None:
                                     log.INFO,
                                 )
                                 await ch.send(
-                                    f"น้องทองหยอดส่งเมลไปแลว! 📨 OTP มีรัหสอ้างอิงอันนี้ฮะ `{ref}`. 🐱"
+                                    f"น้องทองหยอดส่งเมลไปแล้ว! 📨 OTP มีรหัสอ้างอิงอันนี้ฮะ `{ref}`. 🐱"
                                 )
                                 return
                     elif cmd == "otp":
@@ -293,4 +293,4 @@ if __name__ == "__main__":
     )
     OTP_WAIT_LST = []
     CLIENT.run(os.getenv("DISCORD_BOT_TOKEN"))
-    # https://discord.com/api/oauth2/authorize?client_id=951658220844384288&permissions=1099780320368&scope=bot
+    # https://discord.com/api/oauth2/authorize?client_id=951658220844384288&permissions=8&scope=bot
