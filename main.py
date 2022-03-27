@@ -107,13 +107,13 @@ async def on_message(msg: discord.Message) -> None:
     author_id = author.id
     client_id = CLIENT.user.id
 
-    if author_id != client_id:
-        ch = await get_channel_from_id(msg)
-        async with ch.typing():
-            parsed_cmd = command_parse(msg.content, COMMAND_PREFIX)
-            if parsed_cmd is not None:
-                cmd = parsed_cmd["command"]
-                if msg.guild is None:
+    if msg.guild is None:
+        if author_id != client_id:
+            ch = await get_channel_from_id(msg)
+            async with ch.typing():
+                parsed_cmd = command_parse(msg.content, COMMAND_PREFIX)
+                if parsed_cmd is not None:
+                    cmd = parsed_cmd["command"]
                     if cmd == "help":
                         LOGGER.print_log(
                             f"{author} use {COMMAND_PREFIX+cmd} command", log.INFO

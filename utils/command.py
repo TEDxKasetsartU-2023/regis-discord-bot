@@ -39,6 +39,9 @@ def command_parse(
     global COMMAND_STRUCTURE
 
     string_lst = custom_split(string)
+    if len(string_lst) == 0:
+        return None
+        
     cmd = string_lst[0]
     param = string_lst[1:]
 
