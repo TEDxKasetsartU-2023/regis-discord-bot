@@ -113,18 +113,18 @@ async def on_message(msg: discord.Message) -> None:
             parsed_cmd = command_parse(msg.content, COMMAND_PREFIX)
             if parsed_cmd is not None:
                 cmd = parsed_cmd["command"]
-                if cmd == "help":
-                    LOGGER.print_log(
-                        f"{author} use {COMMAND_PREFIX+cmd} command", log.INFO
-                    )
-                    help_msg = discord.Embed(
-                        title="❓วิธีให้น้องทองหยอดช่วย❓",
-                        description=HELP_MSG,
-                        color=discord.Color.random(),
-                    )
-                    await ch.send(embed=help_msg)
-                elif msg.guild is None:
-                    if cmd == "regis":
+                if msg.guild is None:
+                    if cmd == "help":
+                        LOGGER.print_log(
+                            f"{author} use {COMMAND_PREFIX+cmd} command", log.INFO
+                        )
+                        help_msg = discord.Embed(
+                            title="❓วิธีให้น้องทองหยอดช่วย❓",
+                            description=HELP_MSG,
+                            color=discord.Color.random(),
+                        )
+                        await ch.send(embed=help_msg)
+                    elif cmd == "regis":
                         LOGGER.print_log(
                             f"{author} use {COMMAND_PREFIX+cmd} command", log.INFO
                         )
@@ -271,14 +271,14 @@ async def on_message(msg: discord.Message) -> None:
                                 f"ส่งมาทำไมอ่ะ? 😾"
                             )
                             return
-            else:
-                LOGGER.print_log(
-                    f"{author} sent a unknown/incomplete command [{msg.content}]",
-                    log.INFO,
-                )
-                await ch.send(
-                    f"คือไรอ่ะ ไม่เข้าใจอ่ะ 🙀\nใช้ `{COMMAND_PREFIX}help` นะถ้าไม่รู้จะใช้ไงอ่ะะ"
-                )
+                    else:
+                        LOGGER.print_log(
+                            f"{author} sent a unknown/incomplete command [{msg.content}]",
+                            log.INFO,
+                        )
+                        await ch.send(
+                            f"คือไรอ่ะ ไม่เข้าใจอ่ะ 🙀\nใช้ `{COMMAND_PREFIX}help` นะถ้าไม่รู้จะใช้ไงอ่ะะ"
+                        )
 
 
 # | MAIN
