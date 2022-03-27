@@ -188,6 +188,9 @@ async def on_message(msg: discord.Message) -> None:
                                 )
                                 return
                     elif cmd == "otp":
+                        LOGGER.print_log(
+                            f"{author} use {COMMAND_PREFIX+cmd} command", log.INFO
+                        )
                         _otp = parsed_cmd["param"]["otp"]
                         wait_data = None
                         for d in OTP_WAIT_LST:
