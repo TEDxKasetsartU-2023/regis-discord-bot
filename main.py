@@ -90,6 +90,7 @@ async def on_ready() -> None:
     global LOGGER
 
     LOGGER.print_log("Ready!", log_level=log.INFO)
+    await CLIENT.change_presence(status=discord.Status.online, activity=discord.Game("with น้องฝอยทอง"))
 
 
 @CLIENT.event
